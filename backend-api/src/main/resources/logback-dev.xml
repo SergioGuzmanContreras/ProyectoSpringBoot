@@ -1,0 +1,68 @@
+<included>
+
+    <property name="LOG_PATH" value="/home/ercheco/logs" />
+	
+		
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{dd-MM-yyyy HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="ERROR_LOGIN" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>%d{dd-MM-yyyy'|'HH:mm:ss}|%msg%n</pattern>
+            <charset>utf8</charset>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>${LOG_PATH}/error-login.%d{yyyy-MM-dd}.%i.log
+            </fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="LOGIN" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>%d{dd-MM-yyyy'|'HH:mm:ss}|%msg%n</pattern>
+            <charset>utf8</charset>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>${LOG_PATH}/login.%d{yyyy-MM-dd}.%i.log
+            </fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+    </appender>
+
+    <!-- Log para salida a consola para debug -->
+    <logger name="org.springframework.batch" additivity="false" level="DEBUG">
+        <appender-ref ref="CONSOLE" />
+    </logger>
+    <logger name="mx.com.posadas" additivity="false" level="INFO">
+        <appender-ref ref="CONSOLE" />
+    </logger>
+
+    <logger name="errorLoginLog" additivity="false" level="ERROR">
+        <appender-ref ref="ERROR_LOGIN" />
+    </logger>
+    <logger name="loginLog" additivity="false" level="INFO">
+        <appender-ref ref="LOGIN" />
+    </logger>
+
+    <!-- put your root here -->
+    <root level="info">
+        <appender-ref ref="CONSOLE" />
+    </root>
+
+</included>

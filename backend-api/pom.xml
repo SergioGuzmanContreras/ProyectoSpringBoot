@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>backend-ninja</artifactId>
+		<groupId>mx.com.ersoft</groupId>
+		<version>${project-version}</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<artifactId>backend-api</artifactId>
+	<packaging>jar</packaging>
+
+	<name>backend-api</name>
+	<description>Proyecto para la exposisión de servicios</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>mx.com.ersoft</groupId>
+			<artifactId>backend-service</artifactId>
+			<version>${project-version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<dependencies>
+					<dependency>
+						<groupId>org.springframework</groupId>
+						<artifactId>springloaded</artifactId>
+						<version>1.2.6.RELEASE</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

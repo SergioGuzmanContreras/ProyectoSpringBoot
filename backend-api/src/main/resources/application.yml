@@ -1,0 +1,33 @@
+spring:
+  profiles:
+    active: dev
+  output:
+    ansi:
+      enabled: always
+  application:
+    name: bakend-ninja
+  banner:
+    location: static/banner.txt
+  datasource:
+    url: jdbc:mysql://localhost:3307/test?serverTimezone=GMT-6
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: admin
+    password: admin
+    testWhileIdle: true
+    hikari:
+      maximum-pool-size: 10
+    initialize: true
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming-strategy: org.hibernate.dialect.MySQL5Dialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+  thymeleaf:
+    cache: false
+server:
+  servlet:
+    context-path: /backend
+  port: 8084
